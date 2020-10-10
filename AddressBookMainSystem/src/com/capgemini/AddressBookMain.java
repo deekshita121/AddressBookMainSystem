@@ -163,7 +163,6 @@ public class AddressBookMain {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
 				if (value.contactDetailsList.get(i).state.contains(state)) {
-					System.out.println(value.contactDetailsList.get(i).state);
 					System.out.println(value.contactDetailsList.get(i));
 					flag = 1;
 				}
