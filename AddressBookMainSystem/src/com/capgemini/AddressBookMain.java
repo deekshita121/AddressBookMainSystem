@@ -5,6 +5,7 @@ import java.util.*;
 public class AddressBookMain {
 	static Scanner sc = new Scanner(System.in);
 	private LinkedList<ContactDetails> contactDetailsList;
+	
 
 	private AddressBookMain() {
 		contactDetailsList = new LinkedList<>();
@@ -135,6 +136,39 @@ public class AddressBookMain {
 				System.out.println(value.contactDetailsList.get(i));
 		}
 	}
+	
+	private static void contactCity(Map<String, AddressBookMain> addressBookMap) {
+		System.out.println("Enter city of person whose record is to be searched: ");
+		String city = sc.nextLine();
+		int flag = 0;
+		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
+			AddressBookMain value = entry.getValue();
+			for (int i = 0; i < value.contactDetailsList.size(); i++)
+				if (value.contactDetailsList.get(i).city.contains(city)) {
+					System.out.println(value.contactDetailsList.get(i));
+					flag = 1;
+				}
+		}
+		if(flag==0)
+			System.out.println("No persons in that city");
+	}
+
+	private static void contactState(Map<String, AddressBookMain> addressBookMap) {
+		System.out.println("Enter state of person whose record is to be searched: ");
+		String state = sc.nextLine();
+		int flag = 0;
+		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
+			AddressBookMain value = entry.getValue();
+			for (int i = 0; i < value.contactDetailsList.size(); i++)
+				if (value.contactDetailsList.get(i).state.contains(state)) {
+					System.out.println(value.contactDetailsList.get(i));
+					flag = 1;
+				}
+		}
+		if(flag==0)
+			System.out.println("No persons in that state");
+	}
+
 
 	public static void main(String[] args) {
 		Map<String, AddressBookMain> addressBookMap = new HashMap<>();
@@ -156,7 +190,8 @@ public class AddressBookMain {
 			System.out.println("2. Delete Contact ");
 			System.out.println("3. Search Contact ");
 			System.out.println("4. Display Contact ");
-			System.out.println("5. Exit ");
+			System.out.println("5. Search Contact by city ");
+			System.out.println("6. Exit ");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
@@ -170,6 +205,12 @@ public class AddressBookMain {
 				break;
 			case 4:
 				displayContactDetails(addressBookMap);
+				break;
+			case 5:
+				contactCity(addressBookMap);
+				break;
+			case 6:
+				contactState(addressBookMap);
 				break;
 			default:
 				i = 0;
