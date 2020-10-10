@@ -1,3 +1,4 @@
+
 package com.capgemini;
 
 import java.util.*;
@@ -25,11 +26,12 @@ public class AddressBookMain {
 				firstName = sc.nextLine();
 				System.out.println("Last Name: ");
 				lastName = sc.nextLine();
-				for (int j = 0; j < i; j++)
+				for (int j = 0; j < i; j++) {
 					if (contactDetailsList.get(j).firstName.equals(firstName)
 							&& contactDetailsList.get(j).lastName.equals(lastName)) {
 						counter++;
 					}
+        }
 				if (counter != 0) {
 					System.out.println("This name already exists! Please enter again");
 					flag = 0;
@@ -227,3 +229,5 @@ public class AddressBookMain {
 
 	}
 }
+				
+		
