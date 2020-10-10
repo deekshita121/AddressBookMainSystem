@@ -10,15 +10,31 @@ public class AddressBookMain {
 		contactDetailsList = new LinkedList<>();
 	}
 
+
 	private void addContact(int addressBookNum) {
 		System.out.println("How many entries you want to make in Address Book " + addressBookNum);
-		int noOfRecords = sc.nextInt();
+		int numOfEntries = sc.nextInt();
 		sc.nextLine();
-		for (int i = 0; i < noOfRecords; i++) {
-			System.out.println("First Name: ");
-			String firstName = sc.nextLine();
-			System.out.println("Last Name: ");
-			String lastName = sc.nextLine();
+		for (int i = 0; i < numOfEntries; i++) {
+			String firstName, lastName;
+			int flag = 0;
+			do {
+				int counter = 0;
+				System.out.println("First Name: ");
+				firstName = sc.nextLine();
+				System.out.println("Last Name: ");
+				lastName = sc.nextLine();
+				for (int j = 0; i < i; j++)
+					if (contactDetailsList.get(j).firstName.equals(firstName)
+							&& contactDetailsList.get(j).lastName.equals(lastName)) {
+						counter++;
+					}
+				if (counter != 0) {
+					System.out.println("This name already exists! Please enter again");
+					flag = 0;
+				} else
+					flag = 1;
+			} while (flag == 0);
 			System.out.println("Address: ");
 			String address = sc.nextLine();
 			System.out.println("City: ");
@@ -32,9 +48,9 @@ public class AddressBookMain {
 			sc.nextLine();
 			System.out.println("Email ID: ");
 			String emailId = sc.nextLine();
-			ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, zip, phoneNo,
+			ContactDetails contactDetail = new ContactDetails(firstName, lastName, address, state, city, zip, phoneNo,
 					emailId);
-			contactDetailsList.add(contactDetails);
+			contactDetailsList.add(contactDetail);
 		}
 	}
 
