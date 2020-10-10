@@ -1,3 +1,4 @@
+
 package com.capgemini;
 
 import java.util.*;
@@ -25,11 +26,12 @@ public class AddressBookMain {
 				firstName = sc.nextLine();
 				System.out.println("Last Name: ");
 				lastName = sc.nextLine();
-				for (int j = 0; i < i; j++)
+				for (int j = 0; j < i; j++) {
 					if (contactDetailsList.get(j).firstName.equals(firstName)
 							&& contactDetailsList.get(j).lastName.equals(lastName)) {
 						counter++;
 					}
+        }
 				if (counter != 0) {
 					System.out.println("This name already exists! Please enter again");
 					flag = 0;
@@ -140,35 +142,40 @@ public class AddressBookMain {
 		System.out.println("Enter city of person whose record is to be searched: ");
 		String city = sc.nextLine();
 		sc.nextLine();
-		int flag = 0;
+		int count = 0;
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
-			for (int i = 0; i < value.contactDetailsList.size(); i++)
+			for (int i = 0; i < value.contactDetailsList.size(); i++) {
 				if (value.contactDetailsList.get(i).city.contains(city)) {
 					System.out.println(value.contactDetailsList.get(i));
-					flag = 1;
-					break;
+					count++;
 				}
+			}
 		}
-		if(flag==0)
+		if(count==0)
 			System.out.println("No persons in that city");
+		else
+			System.out.println(count+" persons in the same city");
 	}
 
 	private static void contactState(Map<String, AddressBookMain> addressBookMap) {
 		System.out.println("Enter state of person whose record is to be searched: ");
 		String state = sc.nextLine();
 		sc.nextLine();
-		int flag = 0;
+		int count = 0;
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
-			for (int i = 0; i < value.contactDetailsList.size(); i++)
+			for (int i = 0; i < value.contactDetailsList.size(); i++) {
 				if (value.contactDetailsList.get(i).state.contains(state)) {
 					System.out.println(value.contactDetailsList.get(i));
-					flag = 1;
+					count++;
 				}
+			}
 		}
-		if(flag==0)
+		if(count==0)
 			System.out.println("No persons in that state");
+		else
+			System.out.println(count+" persons in same state");
 	}
 
 
@@ -222,4 +229,5 @@ public class AddressBookMain {
 
 	}
 }
-
+				
+		
