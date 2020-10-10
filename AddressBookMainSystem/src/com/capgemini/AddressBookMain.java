@@ -49,8 +49,7 @@ public class AddressBookMain {
 			sc.nextLine();
 			System.out.println("Email ID: ");
 			String emailId = sc.nextLine();
-			ContactDetails contactDetail = new ContactDetails(firstName, lastName, address, state, city, zip, phoneNo,
-					emailId);
+			ContactDetails contactDetail = new ContactDetails(firstName, lastName, address, state, city, zip, phoneNo, emailId);
 			contactDetailsList.add(contactDetail);
 		}
 	}
@@ -140,6 +139,7 @@ public class AddressBookMain {
 	private static void contactCity(Map<String, AddressBookMain> addressBookMap) {
 		System.out.println("Enter city of person whose record is to be searched: ");
 		String city = sc.nextLine();
+		sc.nextLine();
 		int flag = 0;
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
@@ -147,6 +147,7 @@ public class AddressBookMain {
 				if (value.contactDetailsList.get(i).city.contains(city)) {
 					System.out.println(value.contactDetailsList.get(i));
 					flag = 1;
+					break;
 				}
 		}
 		if(flag==0)
@@ -156,6 +157,7 @@ public class AddressBookMain {
 	private static void contactState(Map<String, AddressBookMain> addressBookMap) {
 		System.out.println("Enter state of person whose record is to be searched: ");
 		String state = sc.nextLine();
+		sc.nextLine();
 		int flag = 0;
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
@@ -191,7 +193,8 @@ public class AddressBookMain {
 			System.out.println("3. Search Contact ");
 			System.out.println("4. Display Contact ");
 			System.out.println("5. Search Contact by city ");
-			System.out.println("6. Exit ");
+			System.out.println("6. Search Contact by state ");
+			System.out.println("7. Exit ");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
@@ -219,3 +222,4 @@ public class AddressBookMain {
 
 	}
 }
+
