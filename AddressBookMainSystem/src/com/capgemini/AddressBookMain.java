@@ -25,7 +25,7 @@ public class AddressBookMain {
 				firstName = sc.nextLine();
 				System.out.println("Last Name: ");
 				lastName = sc.nextLine();
-				for (int j = 0; i < i; j++)
+				for (int j = 0; j< i; j++)
 					if (contactDetailsList.get(j).firstName.equals(firstName)
 							&& contactDetailsList.get(j).lastName.equals(lastName)) {
 						counter++;
@@ -75,8 +75,8 @@ public class AddressBookMain {
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
-				if (value.contactDetailsList.get(i).firstName.contains(firstName)
-						&& value.contactDetailsList.get(i).lastName.contains(lastName)) {
+				if (value.contactDetailsList.get(i).firstName.equals(firstName)
+						&& value.contactDetailsList.get(i).lastName.equals(lastName)) {
 					ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, zip,
 							phoneNo, emailId);
 					value.contactDetailsList.set(i, contactDetails);
@@ -86,6 +86,7 @@ public class AddressBookMain {
 	}
 
 	private static void searchContactDetails(Map<String, AddressBookMain> addressBookMap) {
+		sc.nextLine();
 		System.out.println("Enter First Name of person whose record is to be searched: ");
 		String firstName = sc.nextLine();
 		System.out.println("Enter Last Name of person whose record is to be searched: ");
@@ -94,8 +95,8 @@ public class AddressBookMain {
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
-				if (value.contactDetailsList.get(i).firstName.contains(firstName)
-						&& value.contactDetailsList.get(i).lastName.contains(lastName)) {
+				if (value.contactDetailsList.get(i).firstName.equals(firstName)
+						&& value.contactDetailsList.get(i).lastName.equals(lastName)) {
 					System.out.println(value.contactDetailsList.get(i));
 					flag = 1;
 					break;
@@ -107,6 +108,7 @@ public class AddressBookMain {
 	}
 
 	public static void deleteContactDetails(Map<String, AddressBookMain> addressBookMap) {
+		sc.nextLine();
 		System.out.println("Enter First Name of person whose record is to be deleted: ");
 		String firstName = sc.nextLine();
 		System.out.println("Enter Last Name of person whose record is to be deleted: ");
@@ -115,8 +117,8 @@ public class AddressBookMain {
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
-				if (value.contactDetailsList.get(i).firstName.contains(firstName)
-						&& value.contactDetailsList.get(i).lastName.contains(lastName)) {
+				if (value.contactDetailsList.get(i).firstName.equals(firstName)
+						&& value.contactDetailsList.get(i).lastName.equals(lastName)) {
 					value.contactDetailsList.remove(i);
 					System.out.println("Deleted Contact");
 					flag = 1;
@@ -137,6 +139,7 @@ public class AddressBookMain {
 	}
 	
 	private static void contactCity(Map<String, AddressBookMain> addressBookMap) {
+		sc.nextLine();
 		System.out.println("Enter city of person whose record is to be searched: ");
 		String city = sc.nextLine();
 		sc.nextLine();
@@ -144,7 +147,7 @@ public class AddressBookMain {
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
-				if (value.contactDetailsList.get(i).city.contains(city)) {
+				if (value.contactDetailsList.get(i).city.equals(city)) {
 					System.out.println(value.contactDetailsList.get(i));
 					flag = 1;
 					break;
@@ -155,6 +158,7 @@ public class AddressBookMain {
 	}
 
 	private static void contactState(Map<String, AddressBookMain> addressBookMap) {
+		sc.nextLine();
 		System.out.println("Enter state of person whose record is to be searched: ");
 		String state = sc.nextLine();
 		sc.nextLine();
@@ -162,7 +166,7 @@ public class AddressBookMain {
 		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
 			AddressBookMain value = entry.getValue();
 			for (int i = 0; i < value.contactDetailsList.size(); i++)
-				if (value.contactDetailsList.get(i).state.contains(state)) {
+				if (value.contactDetailsList.get(i).state.equals(state)) {
 					System.out.println(value.contactDetailsList.get(i));
 					flag = 1;
 				}
